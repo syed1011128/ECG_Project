@@ -22,6 +22,12 @@ import traceback
 from datetime import datetime
 from pathlib import Path
 
+import os
+# Linux/GNOME fix: force Qt's generic theme (avoids the 'antialiasing' gsettings crash).
+# Must run BEFORE Qt is imported. Opt out with ECG_KEEP_QT_THEME=1
+if sys.platform.startswith("linux") and not os.environ.get("ECG_KEEP_QT_THEME"):
+    os.environ["QT_QPA_PLATFORMTHEME"] = "generic"
+
 import numpy as np
 import pyqtgraph as pg
 from pyqtgraph.Qt import QtCore, QtWidgets
