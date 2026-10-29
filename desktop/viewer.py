@@ -16,15 +16,21 @@ from __future__ import annotations
 
 import argparse
 import csv
+import os
 import sys
 import time
 import traceback
 from datetime import datetime
 from pathlib import Path
 
-import os
-# Linux/GNOME fix: force Qt's generic theme (avoids the 'antialiasing' gsettings crash).
-# Must run BEFORE Qt is imported. Opt out with ECG_KEEP_QT_THEME=1
+# Linux/GNOME fix: Qt's GNOME theme plugin reads a gsettings key ('antialiasing')
+# that newer GNOME versions no longer have, and GLib then aborts the process:
+#   GLib-GIO-ERROR ... 'org.gnome.settings-daemon.plugins.xsettings' does not
+#   contain a key named 'antialiasing'
+# Using Qt's generic theme avoids that code path. Must be set BEFORE Qt is imported.
+# We FORCE it (not setdefault): Ubuntu sessions usually already export
+# QT_QPA_PLATFORMTHEME=gnome/gtk3, and that existing value is what crashes.
+# To opt out:  ECG_KEEP_QT_THEME=1 python viewer.py ...
 if sys.platform.startswith("linux") and not os.environ.get("ECG_KEEP_QT_THEME"):
     os.environ["QT_QPA_PLATFORMTHEME"] = "generic"
 
