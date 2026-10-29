@@ -1,0 +1,8 @@
+# subject=S01
+# activity=rest
+# source=/dev/ttyUSB0 @ 230400
+# fs_nominal_hz=100.0
+# finger_thr_counts=30000.0
+# note=ppg_filt = -(causal 0.5-8 Hz band-pass of IR); spo2_est is uncalibrated and only filled while quality == OK; filter rows on the quality column
+# started=2026-10-30T01:49:07
+timestamp_us,red,ir,ppg_filt,bpm,pi_pct,r_ratio,spo2_est_experimental,finger,quality
