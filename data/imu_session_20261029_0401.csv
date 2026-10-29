@@ -1,0 +1,11 @@
+# subject=S01
+# activity=rest
+# source=/dev/ttyUSB0 @ 230400
+# fs_nominal_hz=100.0
+# accel_range_g_initial=4
+# gyro_range_dps_initial=500
+# motion_thr_g=0.05
+# gyro_thr_dps=15.0
+# window_s=1.0
+# started=2026-10-29T04:01:40
+timestamp_us,ax_g,ay_g,az_g,gx_dps,gy_dps,gz_dps,a_mag_g,accel_idx_g,gyro_idx_dps,motion,calibrated
